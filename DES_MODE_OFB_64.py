@@ -30,6 +30,7 @@ def decrypt(ciphertext):
     except (ValueError, KeyError):
         print("Incorrect decryption")
 
+#test function to measure the time without Json packaging 
 def encrypt_decrypt(ciphertext):
     cipher = DES.new(key, DES.MODE_OFB)
     ct_bytes = cipher.encrypt(plaintext) 
