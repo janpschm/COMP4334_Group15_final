@@ -7,6 +7,8 @@ import AES_MODE_CBC_256
 
 import DES_MODE_OFB_64
 import DES_TRIPLE_192
+import BLOWFISH_128
+import BLOWFISH_256
 
 # HOW TO USE THIS PERFORMANCE TEST:
 # Start this Script to get the performance output of all listed Encryption functions. 
@@ -133,14 +135,47 @@ j = i
 print("The time of decryption was :",
 	(end-start) * 10**3, "ms")
 
-#--------DES_MODE_62_ENCDECR-------------------------
-print("----------DES_MODE_62_ENCDECR----------")
+
+#--------BLOWFISH_128----------------------
+print("----------BLOWFISH_128----------")
 #ENCRYPTION
 start = time.time()
 while j>0:
-	ciphertext = DES_MODE_OFB_64.encrypt_decrypt(plaintext)
+	ciphertext = BLOWFISH_128.encrypt(plaintext)
 	j -= 1
 end = time.time()
 j = i 
 print("The time of encryption was :",
+	(end-start) * 10**3, "ms")
+
+#DECRYPTION
+start = time.time()
+while j>0:
+	BLOWFISH_128.decrypt(ciphertext)
+	j -= 1
+end = time.time()
+j = i 
+print("The time of decryption was :",
+	(end-start) * 10**3, "ms")
+
+#--------BLOWFISH_256----------------------
+print("----------BLOWFISH_256----------")
+#ENCRYPTION
+start = time.time()
+while j>0:
+	ciphertext = BLOWFISH_256.encrypt(plaintext)
+	j -= 1
+end = time.time()
+j = i 
+print("The time of encryption was :",
+	(end-start) * 10**3, "ms")
+
+#DECRYPTION
+start = time.time()
+while j>0:
+	BLOWFISH_256.decrypt(ciphertext)
+	j -= 1
+end = time.time()
+j = i 
+print("The time of decryption was :",
 	(end-start) * 10**3, "ms")

@@ -13,7 +13,7 @@ plaintext = b'tested plaintext'
 
 def encrypt(plaintext):
     cipher = DES.new(key, DES.MODE_OFB)
-    ct_bytes = cipher.encrypt(plaintext) #padding? Block Size?
+    ct_bytes = cipher.encrypt(plaintext)
     iv = b64encode(cipher.iv).decode('utf-8')
     ct = b64encode(ct_bytes).decode('utf-8')
     encrypted_result = json.dumps({'iv':iv, 'ciphertext':ct})
