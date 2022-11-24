@@ -13,7 +13,7 @@ from Crypto.Util.Padding import unpad
 
 print("STARTING AES_MODE_CBC_192 SCRIPT")
 key = get_random_bytes(24) #CHANGE KEY SIZE HERE
-plaintext = b'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam accumsan lacus velit, non scelerisque turpis maximus quis. Etiam et gravida nisl. Suspendisse potenti. Integer est felis, venenatis tincidunt posuere quis, fringilla eu urna. Donec commodo tincidunt enim, ut luctus dolor venenatis tempor. Vestibulum placerat neque consectetur fermentum ultrices. Pellentesque pretium tristique cursus. Morbi a sapien leo. Suspendisse semper nunc quis urna suscipit, ac porttitor justo auctor. Morbi leo risus, varius nec nisi quis, faucibus facilisis mauris. Sed vehicula, metus quis elementum aliquet, elit odio tristique velit, vel bibendum metus ex quis felis. Pellentesque habitant morbi tristique senectus et netus et'
+plaintext = b"tested text"
 
 def encrypt(plaintext):
     cipher = AES.new(key, AES.MODE_CBC)
@@ -22,7 +22,7 @@ def encrypt(plaintext):
     iv = b64encode(cipher.iv).decode('utf-8')
     ct = b64encode(ct_bytes).decode('utf-8')
     encrypted_result = json.dumps({'iv':iv, 'ciphertext':ct})
-    #print("The Encrypted result:"+encrypted_result) 
+    print("The Encrypted result:"+encrypted_result) 
     return encrypted_result
 
 def decrypt(ciphertext):
@@ -32,7 +32,7 @@ def decrypt(ciphertext):
         ct = b64decode(b64['ciphertext'])
         cipher = AES.new(key, AES.MODE_CBC, iv)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
-        #print("The message was: ", pt)
+        print("The message was: ", pt)
     except (ValueError, KeyError):
         print("Incorrect decryption")
     
