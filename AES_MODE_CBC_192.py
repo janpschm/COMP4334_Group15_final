@@ -22,7 +22,7 @@ def encrypt(plaintext):
     iv = b64encode(cipher.iv).decode('utf-8')
     ct = b64encode(ct_bytes).decode('utf-8')
     encrypted_result = json.dumps({'iv':iv, 'ciphertext':ct})
-    print("The Encrypted result:"+encrypted_result) 
+    #print("The Encrypted result:"+encrypted_result) 
     return encrypted_result
 
 def decrypt(ciphertext):
@@ -32,7 +32,7 @@ def decrypt(ciphertext):
         ct = b64decode(b64['ciphertext'])
         cipher = AES.new(key, AES.MODE_CBC, iv)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
-        print("The message was: ", pt)
+        #print("The message was: ", pt)
     except (ValueError, KeyError):
         print("Incorrect decryption")
     
